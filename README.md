@@ -8,7 +8,7 @@ JSONでの出力・読み込みにも対応しています。
 
 項目内容は大学生協で買った履歴書を参考にしました。
 
-[Resume.jp](stsysd.github.io/resume.jp/)
+[Resume.jp](https://stsysd.github.io/resume.jp/)
 
 
 ## Using Library
