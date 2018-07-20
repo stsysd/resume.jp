@@ -88,7 +88,7 @@ let Building = Vue.extend({
     },
     methods: {
         onFlood(name, b) {
-            this.flooding[name] = b;
+            Vue.set(this.flooding, name, b);
         }
     }
 });
@@ -99,19 +99,19 @@ let BasicsBuilding = Building.extend({
     template: `
     <article id="basics" class="building">
     <div class="floor">
-        <section id="name" class="room info">
+        <section id="name" class="room info" :class="{ flood: flooding.name }">
             <h1>氏名</h1>
             <ruby-text :value="data.name" @flood="onFlood('name', $event)">
             </ruby-text>
         </section>
     </div>
     <div class="floor">
-        <section id="birthday" class="room info">
+        <section id="birthday" class="room info" :class="{ flood: flooding.birthday }">
             <h1>生年月日</h1>
             <simple-text :value="birthdayText" @flood="onFlood('birthday', $event)">
             </simple-text>
         </section>
-        <section id="sex" class="room info">
+        <section id="sex" class="room info" :class="{ flood: flooding.sex }">
             <h1>性別</h1>
             <simple-text :value="data.sex" @flood="onFlood('sex', $event)"></simple-text>
         </section>
@@ -140,44 +140,59 @@ let ContactBuilding = Building.extend({
     template: `
     <article id="contact" class="building">
     <div class="floor">
-        <section id="address-with-post" class="room info">
+        <section id="address-with-post" class="room info" :class="{ flood: flooding.post || flooding.address }">
             <h1>現住所</h1>
             <div>
-                <simple-text id="post" :value="postText" @flood="onFlood('post')"></simple-text>
-                <ruby-text id="address" :value="data.address" @flood="onFlood('address')"></ruby-text>
+                <simple-text id="post" :value="postText" @flood="onFlood('post', $event)"></simple-text>
+                <ruby-text id="address" :value="data.address" @flood="onFlood('address', $event)"></ruby-text>
             </div>
         </section>
     </div>
     <div class="floor">
-        <section id="telephone" class="room info">
+        <section id="telephone" class="room info" :class="{ flood: flooding.telephone }">
             <h1>電話</h1>
-            <simple-text v-if="data.telephone" class="phone" :value="data.telephone" @flood="onFlood($event, 'telephone')"></simple-text>
+            <simple-text v-if="data.telephone"
+                class="phone" :value="data.telephone"
+                @flood="onFlood('telephone', $event)">
+            </simple-text>
             <p v-else>なし</p>
         </section>
-        <section id="cellphone" class="room info">
+        <section id="cellphone" class="room info" :class="{ flood: flooding.cellphone }">
             <h1>携帯</h1>
-            <simple-text v-if="data.cellphone" class="phone" :value="data.cellphone" @flood="onFlood($event, 'cellphone')"></simple-text>
+            <simple-text v-if="data.cellphone"
+                class="phone" :value="data.cellphone"
+                @flood="onFlood('cellphone', $event)">
+            </simple-text>
             <p v-else>なし</p>
         </section>
     </div>
     <div class="floor">
-        <section id="mail" class="room info">
+        <section id="mail" class="room info" :class="{ flood: flooding.mail }">
             <h1>E-mail</h1>
-            <simple-text v-if="data.mail" class="mail" :value="data.mail" @flood="onFlood('mail', $event)"></simple-text>
+            <simple-text v-if="data.mail"
+                class="mail" :value="data.mail"
+                @flood="onFlood('mail', $event)">
+            </simple-text>
             <p v-else>なし</p>
         </section>
     </div>
     <div class="floor">
-        <section id="alt-address" class="room info">
+        <section id="alt-address" class="room info" :class="{ flood: flooding['alt-address'] }">
             <h1>連絡先</h1>
-            <simple-text v-if="data.altAddress" :value="data.altAddress" @flood="onFlood('alt-address', $event)"></simple-text>
+            <simple-text v-if="data.altAddress"
+                :value="data.altAddress"
+                @flood="onFlood('alt-address', $event)">
+            </simple-text>
             <p v-else>なし</p>
         </section>
     </div>
     <div class="floor">
-        <section id="alt-phone" class="room info">
+        <section id="alt-phone" class="room info" :class="{ flood: flooding['alt-phone'] }">
             <h1>電話</h1>
-            <simple-text v-if="data.altPhone" :value="data.altPhone" @flood="onFlood('alt-phone', $event)"></simple-text>
+            <simple-text v-if="data.altPhone"
+                :value="data.altPhone"
+                @flood="onFlood('alt-phone', $event)">
+            </simple-text>
             <p v-else>なし</p>
         </section>
     </div>
@@ -196,31 +211,31 @@ let PromotionBuilding = Building.extend({
     template: `
     <article id="promotions" class="building">
     <div class="floor">
-        <section id="motivation" class="room promotion">
+        <section id="motivation" class="room promotion" :class="{ flood: flooding.motivation }">
             <h1>志望動機</h1>
             <writing :value="data.motivation" @flood="onFlood('motivation', $event)"></writing>
         </section>
     </div>
     <div class="floor">
-        <section id="study" class="room promotion">
+        <section id="study" class="room promotion" :class="{ flood: flooding.study }">
             <h1>得意科目及び研究課題</h1>
             <writing :value="data.study" @flood="onFlood('study', $event)"></writing>
         </section>
     </div>
     <div class="floor">
-        <section id="experience" class="room promotion">
+        <section id="experience" class="room promotion" :class="{ flood: flooding.experience }">
             <h1>スポーツ・クラブ活動・文化活動などの体験から得たもの</h1>
             <writing :value="data.experience" @flood="onFlood('experience', $event)"></writing>
         </section>
     </div>
     <div class="floor">
-        <section id="hobby" class="room promotion">
+        <section id="hobby" class="room promotion" :class="{ flood: flooding.hobby }">
             <h1>趣味・特技</h1>
             <writing :value="data.hobby" @flood="onFlood('hobby', $event)"></writing>
         </section>
     </div>
     <div class="floor">
-        <section id="strong" class="room promotion">
+        <section id="strong" class="room promotion" :class="{ flood: flooding.strong }">
             <h1>長所・特徴</h1>
             <writing :value="data.strong" @flood="onFlood('strong', $event)"></writing>
         </section>
@@ -230,19 +245,16 @@ let PromotionBuilding = Building.extend({
 });
 
 
-let EventLine = Content.extend({
-    template: `
-    <tr>
-        <td class="content year">{{value[0]}}</td>
-        <td class="content month">{{value[1]}}</td>
-        <td class="content event">{{value[2]}}</td>
-    </tr>
-    `
+let VueTd = Content.extend({
+    template: "<td class='content'>{{value}}</td>"
 });
 
 let EventTable = Vue.extend({
-    components: { eventLine: EventLine },
+    components: { VueTd },
     props: ["title", "value"],
+    data() {
+        return { flooding: {} };
+    },
     template: `
     <tbody>
         <tr>
@@ -251,11 +263,13 @@ let EventTable = Vue.extend({
             <th>{{title[2]}}</th>
         </tr>
         <template v-if="value.length">
-            <event-line
-                v-for="line in lines"
-                :value="line"
-                @flood="onFlood($event, line[3])">
-            </event-line>
+        <template v-for="line in lines">
+            <tr :class="{ flood: flooding[line[3]] }">
+                <vue-td class="year" :value="line[0]"></vue-td>
+                <vue-td class="month" :value="line[1]"></vue-td>
+                <vue-td class="event" :value="line[2]" @flood="onFlood(line[3], $event)"></vue-td>
+            </tr>
+        </template>
         </template>
         <tr v-else>
             <td></td>
@@ -269,14 +283,14 @@ let EventTable = Vue.extend({
             for (let i=0; i<this.value.length; ++i) {
                 let event = this.value[i];
                 let lines = event[2].split("\n");
-                yield [event[0], event[1], lines[0]];
+                yield [event[0], event[1], lines[0], i];
                 for (let j=1; j<lines.length; ++j) {
                     yield ["", "", lines[j], i];
                 }
             };
         },
-        onFlood(b, i) {
-            this.$emit("flood", b, i);
+        onFlood(i, b) {
+            Vue.set(this.flooding, i, b);
         }
     },
     computed: {
@@ -306,7 +320,7 @@ let LicenseBuilding = Vue.extend({
         return { "line": 0 };
     },
     template: `
-    <table id="license" class="building events">
+    <table id="license" class="building events" :class="{ flood: maxLine < line }">
         <colgroup>
             <col span=1 class="year-col">
             <col span=1 class="month-col">
@@ -324,6 +338,7 @@ let LicenseBuilding = Vue.extend({
     `,
     computed: {
         empties() {
+            if (this.maxLine < this.line) return [];
             return new Array(this.maxLine-this.line);
         }
     },
@@ -339,12 +354,12 @@ let HistoryBuilding = Vue.extend({
     props: ["data", "max-line"],
     data() {
         return {
-            "lineA": 0,
+            "lineE": 0,
             "lineW": 0,
         };
     },
     template: `
-    <table id="history" class="building events">
+    <table id="history" class="building events" :class="{ flood: maxLine < lineE + lineW }">
         <colgroup>
             <col span=1 class="year-col">
             <col span=1 class="month-col">
@@ -359,7 +374,7 @@ let HistoryBuilding = Vue.extend({
         </thead>
         <event-table id="education"
             :title="['', '', '学歴']" :value="data.education"
-            @resize="onResizeA" @click.native="onClick('education')">
+            @resize="onResizeE" @click.native="onClick('education')">
         </event-table>
         <event-table id="work"
             :title="['', '', '職歴']" :value="data.work"
@@ -381,15 +396,16 @@ let HistoryBuilding = Vue.extend({
     `,
     computed: {
         empties() {
-            return new Array(this.maxLine-this.lineA-this.lineW);
+            if (this.maxLine < this.lineE + this.lineW) return [];
+            return new Array(this.maxLine-this.lineE-this.lineW);
         }
     },
     methods: {
         onClick(name) {
             this.$emit(`click-${name}`);
         },
-        onResizeA(n) {
-            this.lineA = n;
+        onResizeE(n) {
+            this.lineE = n;
         },
         onResizeW(n) {
             this.lineW = n;
@@ -415,12 +431,26 @@ let EventEditor = Vue.extend({
                     <th>月</th>
                     <th>事柄</th>
                 </tr>
-                    <tr>
-                        <td> <button class="pure-button" @click.prevent="onAdd">+</button> </td>
-                        <td> <input type="number" name="year" class="year" :value="newevent[0]" min=1970 max=2020 @change="onChange($event, 0)"> </td>
-                        <td> <input type="number" name="month" class="month" :value="newevent[1]" min=1 max=12 @change="onChange($event, 1)"> </td>
-                        <td> <textarea class="event" :value="newevent[2]" @change="onChange($event, 2)"></textarea> </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <button class="pure-button" @click.prevent="onAdd">+</button>
+                    </td>
+                    <td>
+                        <input type="number" name="year"
+                            class="year" :value="newevent[0]"
+                            min=1970 max=2020 @change="onChange($event, 0)"> 
+                    </td>
+                    <td>
+                        <input type="number" name="month"
+                            class="month" :value="newevent[1]"
+                            min=1 max=12 @change="onChange($event, 1)">
+                    </td>
+                    <td>
+                        <textarea class="event"
+                            :value="newevent[2]" @change="onChange($event, 2)">
+                        </textarea>
+                    </td>
+                </tr>
             </thead>
             <tbody>
                 <tr v-for="(e, i) in data">
