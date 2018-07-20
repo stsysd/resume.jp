@@ -1,0 +1,246 @@
+@default-font-size: 12pt;
+@serif: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+@gothic: "ヒラギノ角ゴ Pro W3", "メイリオ", Osaka, Arial, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+@margin-size: 0.5rem;
+
+@page {
+    size: A3 landscape;
+    margin: 0;
+}
+
+.quiet-header {
+    font-size: 80%;
+    color: dimgray;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.fix-height(@line-height: 1.2em, @line: 1) {
+    line-height: @line-height;
+    height: @line-height * @line;
+}
+
+body {
+    font: @default-font-size @serif;
+
+}
+
+#resume {
+    @media screen {
+        background: whitesmoke;
+    }
+
+    @media print {
+        width: 420mm;
+        .flex-row;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+    }
+
+    rt {
+        height: 0;
+        line-height: 1em;
+        font-size: 0.5em;
+    }
+
+    .page {
+        width: 210mm;
+        height: 297mm - 0.1mm;
+        padding: 24mm 24mm;
+        position: relative;
+        background: white;
+
+        @media screen {
+            margin: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            &:first-child {
+                margin-bottom: @margin-size;
+            }
+        }
+
+        &:first-of-type > :nth-child(2),
+        &:first-of-type > :nth-child(3) {
+            width: 80%;
+        }
+    }
+
+    #portrait {
+        width: 30mm;
+        height: 40mm;
+        position: absolute;
+        top: 36mm;
+        right: 24mm;
+
+        border-style: dotted;
+        border-width: 1px;
+
+        text-align: center;
+        padding: @margin-size;
+    }
+
+    .building {
+        width: 100%;
+        border: solid 3px black;
+        &:not(:last-child) {
+            margin-bottom: @margin-size * 2;
+        }
+    }
+    table.building {
+        border-collapse: collapse;
+        th, td {
+            border: 1px solid black;
+        }
+    }
+
+    .floor {
+        .flex-row;
+        align-content: start;
+        width: 100%;
+
+        &:not(:last-child) {
+            border-bottom: solid 1px black;
+        }
+    }
+
+    .room {
+        width: 100%;
+        padding: @margin-size;
+        &:not(:last-child) {
+            border-right: solid 1px black;
+        }
+    }
+
+    .content {
+        overflow: hidden;
+    }
+
+    .title {
+        .flex-row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > h1 {
+            font: 180% @gothic;
+            letter-spacing: 1em;
+            padding: @margin-size;
+        }
+        > time {
+            padding: @margin-size;
+        }
+    }
+
+    .info {
+        .flex-row;
+        align-items: center;
+
+        > h1 {
+            .quiet-header;
+            width: 4.5em;
+            text-align: center;
+            margin-right: @margin-size;
+            .fix-height();
+        }
+
+        p {
+            .fix-height();
+            margin-left: @margin-size;
+            flex: 1;
+
+            &.with-ruby {
+                .fix-height(@line-height: 2.4em);
+                line-height: 2.4em;
+                height: 2.5em;
+
+                ruby:not(:last-child) {
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    .events {
+        table-layout: fixed;
+        col.year-col {
+            width: 5em;
+        }
+        col.month-col {
+            width: 4em;
+        }
+        tr {
+            .fix-height(@line-height: 1.8em);
+        }
+        th {
+            text-align: center;
+        }
+        td {
+            white-space: nowrap;
+        }
+
+        thead th {
+            .quiet-header;
+        }
+        tfoot td {
+            text-align: right;
+            padding: 0 @margin-size;
+        }
+
+        .year, .month {
+            text-align: center;
+        }
+
+        .event {
+            padding: 0 @margin-size;
+        }
+        .continuous {
+            text-indent: @margin-size;
+        }
+    }
+
+    .promotion {
+        > h1 {
+            .quiet-header;
+            padding: 0 @margin-size;
+            margin-bottom: @margin-size;
+        }
+
+        > div {
+            .fix-height(@line: 5);
+            font-size: 85%;
+            > p {
+                text-indent: @margin-size;
+            }
+        }
+    }
+
+    #post {
+        margin-bottom: @margin-size;
+    }
+
+    .mail, .phone {
+        font-family: "Consolas", "Menlo";
+    }
+
+    #name > p {
+        font-size: 180%;
+        letter-spacing: 0em;
+    }
+
+    #birthday {
+        width: 75%;
+    }
+    #sex {
+        width: 25%;
+    }
+
+    #address {
+        line-height: 2.4em;
+        height: 5.0em;
+    }
+}

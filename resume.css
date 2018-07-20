@@ -1,0 +1,247 @@
+@page {
+    size: A3 landscape;
+    margin: 0;
+}
+
+@media print {
+    body {
+        width: 420mm;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen {
+    body {
+        background: whitesmoke;
+    }
+    .page {
+        margin: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body * {
+    overflow: hidden;
+}
+
+body {
+    font: 12pt "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}
+
+rt {
+    font-size: 50%;
+}
+
+.page {
+    width: 210mm;
+    height: 296.9mm;
+    padding: 24mm 24mm;
+    position: relative;
+    background: white;
+}
+
+.building {
+    width: 100%;
+    border: solid 3px black;
+}
+
+.building:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+table.building {
+    border-collapse: collapse;
+}
+
+table.building th,
+table.building td {
+    border: 1px solid black;
+}
+
+.floor {
+    display: flex;
+    flex-direction: row;
+    align-content: start;
+    width: 100%;
+}
+
+.floor:not(:last-child) {
+    border-bottom: solid 1px black;
+}
+
+.room {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.room:not(:last-child) {
+    border-right: solid 1px black;
+}
+
+#portrait {
+    width: 30mm;
+    height: 40mm;
+    position: absolute;
+    top: 36mm;
+    right: 24mm;
+
+    border-style: dotted;
+    border-width: 1px;
+
+    text-align: center;
+    padding: 1rem;
+}
+
+.page:first-of-type > :nth-child(2),
+.page:first-of-type > :nth-child(3) {
+    width: 80%;
+}
+
+.content {
+    white-space: nowrap;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.title > h1 {
+    font-size: 180%;
+    font-family: "ヒラギノ角ゴ Pro W3", "メイリオ", Osaka, Arial, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+    font-weight: normal;
+    letter-spacing: 1em;
+    padding: 1rem;
+}
+
+.title > time {
+    padding: 1rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info > h1 {
+    font-size: 80%;
+    color: dimgray;
+    width: 4.5em;
+    text-align: center;
+    margin-right: 0.5rem;
+
+    height: 1.2em;
+    line-height: 1.2em;
+}
+
+.info > p {
+    height: 1.2em;
+    line-height: 1.2em;
+    padding: 0 0.5rem;
+}
+
+.info p.with_ruby,
+.info p.with_ruby ruby {
+    height: 2.4em;
+    line-height: 2.4em;
+}
+
+.history {
+    table-layout: fixed;
+}
+.history col.year_col {
+    width: 5em;
+}
+.history col.month_col {
+    width: 4em;
+}
+
+.history tr {
+    height: 1.8em;
+    line-height: 1.8em;
+}
+
+.history th {
+    font-weight: normal;
+    text-align: center;
+}
+
+.history thead th {
+    font-size: 80%;
+}
+.history tfoot td {
+    text-align: right;
+    padding: 0 1rem;
+}
+
+.history .year,
+.history .month {
+    text-align: center;
+}
+
+.history .event {
+    padding: 0 0.5rem;
+}
+.history .continuous {
+    text-indent: 1.5em;
+}
+
+.promotion > h1 {
+    font-size: 80%;
+    color: dimgray;
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.promotion > p {
+    font-size: 80%;
+    height: 6.0em;
+    line-height: 1.2em;
+}
+
+.post {
+    font-size: 80%;
+    margin: 0.5rem 0.5rem;
+}
+.mail, .phone {
+    font-family: "Consolas", "Menlo";
+}
+
+#name > p {
+    font-size: 180%;
+    letter-spacing: 0.8em;
+}
+
+#birthday {
+    width: 75%;
+}
+#sex {
+    width: 25%;
+}
+#address p.with_ruby {
+    height: 4.8em;
+}
+
+#rep_name {
+    width: 30%;
+}
+#rep_name > h1 {
+    font-size: 70%;
+}
+#rep_address {
+    width: 70%;
+}
+#rep_address > h1 {
+    font-size: 70%;
+}

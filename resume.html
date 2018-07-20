@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+        integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="resume.less.css" media="all">
+    <link rel="stylesheet" type="text/css" href="control.less.css" media="all">
+    <title>Resume</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="resume">
+            <div class="page">
+                <aside id="portrait">
+                    <h1>写真</h1>
+                    <p>縦40mm
+                        <br>横30mm</p>
+                </aside>
+                <header class="title">
+                    <h1>履歴書</h1>
+                    <time id="today" @click="onClick('today')">
+                        {{resume.today[0]}}年 {{resume.today[1]}}月 {{resume.today[2]}}日現在
+                    </time>
+                </header>
+                <basics-building :data="basics"
+                    @click.native="onClick('basics')">
+                </basics-building>
+                <contact-building :data="contact"
+                    @click.native="onClick('contact')">
+                </contact-building>
+                <history-building :data="history" :max-line=12
+                    @click-education="onClick('education')"
+                    @click-work="onClick('work')">
+                </history-building>
+            </div>
+            <div class="page">
+                <promotion-building :data="promotion"
+                    @click.native="onClick('promotion')">
+                </promotion-building>
+                <license-building :data="resume.license" :max-line=11
+                    @click.native="onClick('license')">
+                </license-building>
+            </div>
+        </div>
+        <div id="control">
+            <div v-show="target!=null" class="overlay" @click="target=null"></div>
+            <today-editor
+                :class="{ active: target=='today'}"
+                :today="resume.today" @change="onChange">
+            </today-editor>
+            <basics-editor
+                :class="{ active: target=='basics' }"
+                :data="basics" @change="onChange">
+            </basics-editor>
+            <contact-editor
+                :class="{ active: target=='contact' }"
+                :data="contact" @change="onChange">
+            </contact-editor>
+            <event-editor
+                :class="{ active: target=='education' }"
+                name="education" label="学歴" :data="resume.education"
+                @add="addEvent" @remove="removeEvent">
+            </event-editor>
+            <event-editor
+                :class="{ active: target=='work' }"
+                name="work" label="職歴" :data="resume.work"
+                @add="addEvent" @remove="removeEvent">
+            </event-editor>
+            <promotion-editor
+                :class="{ active: target=='promotion' }"
+                name="promotion" :data="promotion" @change="onChange">
+            </promotion-editor>
+            <event-editor
+                :class="{ active: target=='license' }"
+                name="license" label="資格・免許" :data="resume.license"
+                @add="addEvent" @remove="removeEvent">
+            </event-editor>
+            <div :class="{ active: target=='load' }" class="editor">
+                <input type="file" @change="onLoadFile">
+            </div>
+            <div class="float-buttons">
+                <a id="download" class="pure-button float-button"
+                    title="download"
+                    download="resume.json" @click="download">
+                    <i class="fas fa-file-download"></i>
+                </a>
+                <button id="load" class="pure-button float-button"
+                    title="load" @click="load">
+                    <i class="fas fa-file-upload"></i>
+                </button>
+                <button id="print" class="pure-button float-button"
+                    title="print" @click="print">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./resume.js"></script>
+</body>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="resume.less.css" media="all">
+    <title>Resume</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="resume">
+            <div class="page">
+                <aside id="portrait">
+                    <h1>写真</h1>
+                    <p>縦40mm
+                        <br>横30mm</p>
+                </aside>
+                <header class="title">
+                    <h1>履歴書</h1>
+                    <time id="today">
+                        2018年 7月 1日現在
+                    </time>
+                </header>
+                <article id="basics" class="building">
+                    <div class="floor">
+                        <section id="name" class="room info">
+                            <h1>氏名</h1>
+                            <p class="content with-ruby">
+                                <ruby>
+                                    履歴書
+                                    <rt>りれきしょ</rt>
+                                </ruby><ruby>
+                                    太郎
+                                    <rt>たろう</rt>
+                                </ruby>
+                            </p>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="birthday" class="room info">
+                            <h1>生年月日</h1>
+                            <p class="content">1995年4月1日 (満23歳)</p>
+                        </section>
+                        <section id="sex" class="room info">
+                            <h1>性別</h1>
+                            <p class="content">男</p>
+                        </section>
+                    </div>
+                </article>
+                <article id="contact" class="building">
+                    <div class="floor">
+                        <section id="address-with-post" class="room info">
+                            <h1>現住所</h1>
+                            <div>
+                                <p class="content" id="post">〒000-0000</p>
+                                <p class="content with-ruby" id="address">
+                                    <ruby>
+                                        東京都
+                                        <rt>とうきょうと</rt>
+                                    </ruby><ruby>
+                                        非実在区
+                                        <rt>ひじつざいく</rt>
+                                    </ruby><ruby>
+                                        架空町
+                                        <rt>かくうちょう</rt>
+                                    </ruby>
+                                    1丁目7-1
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="telephone" class="room info">
+                            <h1>電話</h1>
+                            <p class="content phone">000-0000-0000</p>
+                        </section>
+                        <section id="cellphone" class="room info">
+                            <h1>携帯</h1>
+                            <p class="content phone">000-0000-0000</p>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="mail" class="room info">
+                            <h1>E-mail</h1>
+                            <p class="content mail">this-is@exmaple.com</p>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="alt-address" class="room info">
+                            <h1>連絡先</h1>
+                            <p>なし</p>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="alt-phone" class="room info">
+                            <h1>電話</h1>
+                            <p>なし</p>
+                        </section>
+                    </div>
+                </article>
+                <table id="history" class="building events">
+                    <colgroup>
+                        <col span="1" class="year-col">
+                        <col span="1" class="month-col">
+                        <col span="1" class="event-col">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>年</th>
+                            <th>月</th>
+                            <th>学歴・職歴</th>
+                        </tr>
+                    </thead>
+                    <tbody id="education">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>学歴</th>
+                        </tr>
+                        <tr>
+                            <td class="content year">2011</td>
+                            <td class="content month">3</td>
+                            <td class="content event">非実在中学校 卒業</td>
+                        </tr>
+                        <tr>
+                            <td class="content year">2011</td>
+                            <td class="content month">4</td>
+                            <td class="content event">非実在高等学校 入学</td>
+                        </tr>
+                        <tr>
+                            <td class="content year">2014</td>
+                            <td class="content month">3</td>
+                            <td class="content event">非実在高等学校 卒業</td>
+                        </tr>
+                        <tr>
+                            <td class="content year">2014</td>
+                            <td class="content month">4</td>
+                            <td class="content event">東京大学 理科13類 入学</td>
+                        </tr>
+                        <tr>
+                            <td class="content year">2016</td>
+                            <td class="content month">4</td>
+                            <td class="content event">東京大学 空想学部 黒魔術科 進学</td>
+                        </tr>
+                    </tbody>
+                    <tbody id="work">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>職歴</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="event">なし</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>以上</td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="page">
+                <article id="promotions" class="building">
+                    <div class="floor">
+                        <section id="motivation" class="room promotion">
+                            <h1>志望動機</h1>
+                            <div class="content writing">
+                                <p class="paragraph">太陽が黄色かったから。</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="study" class="room promotion">
+                            <h1>得意科目及び研究課題</h1>
+                            <div class="content writing">
+                                <p class="paragraph">黒魔術。</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="experience" class="room promotion">
+                            <h1>スポーツ・クラブ活動・文化活動などの体験から得たもの</h1>
+                            <div class="content writing">
+                                <p class="paragraph">特になし。</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="hobby" class="room promotion">
+                            <h1>趣味・特技</h1>
+                            <div class="content writing">
+                                <p class="paragraph">履歴書を書く。</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="floor">
+                        <section id="strong" class="room promotion">
+                            <h1>長所・特徴</h1>
+                            <div class="content writing">
+                                <p class="paragraph">履歴書を書く。</p>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <table id="license" class="building events">
+                    <colgroup>
+                        <col span="1" class="year-col">
+                        <col span="1" class="month-col">
+                        <col span="1" class="event-col">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>年</th>
+                            <th>月</th>
+                            <th>免許・資格</th>
+                        </tr>
+                        <tr>
+                            <td class="content year">2015</td>
+                            <td class="content month">8</td>
+                            <td class="content event">普通運転免許証</td>
+                        </tr>
+                        <tr>
+                            <td class="content year">2016</td>
+                            <td class="content month">2</td>
+                            <td class="content event">TOEIC 5千兆点</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="empty">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
