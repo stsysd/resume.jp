@@ -611,8 +611,8 @@ let ContactEditor = Vue.extend({
         <textarea
             class="pure-input-1" placeholder="連絡先"
             :value="data.altAddress"
-            @change="onChange($event, 'altAddress', 0)"
-            @input="onChange($event, 'altAddress', 0)">
+            @change="onChange($event, 'altAddress')"
+            @input="onChange($event, 'altAddress')">
         </textarea>
     </fieldset>
     <fieldset class="pure-u-1">
@@ -717,6 +717,8 @@ let vue = new Vue({
             "telephone": "000-0000-0000",
             "cellphone": "000-0000-0000",
             "mail": "this-is@exmaple.com",
+            "altPhone": "",
+            "altAddress": "",
             "education": [
                 [2011, 3, "非実在中学校 卒業"],
                 [2011, 4, "非実在高等学校 入学"],
