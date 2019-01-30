@@ -66,6 +66,7 @@ body {
   border-width: 1px;
   text-align: center;
   padding: 0.5rem;
+  color: dimgray;
 }
 #resume .building {
   width: 100%;
