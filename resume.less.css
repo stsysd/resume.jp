@@ -214,3 +214,10 @@ body {
   line-height: 2.4em;
   height: 5em;
 }
+#resume .sign {
+  text-align: right;
+  font: 80% "ヒラギノ角ゴ Pro W3", "メイリオ", Osaka, Arial, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+  font-style: italic;
+  color: dimgray;
+  padding: 0.5rem;
+}
