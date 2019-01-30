@@ -295,11 +295,11 @@ let EventTable = Vue.extend({
     },
     computed: {
         lines() {
-            if (this.value) return Array.from(this._lines());
+            if (this.value.length > 0) return Array.from(this._lines());
             return [];
         },
         size() {
-            if (this.value) return this.lines.length + 1;
+            if (this.value.length > 0) return this.lines.length + 1;
             return 2;
         }
     },
